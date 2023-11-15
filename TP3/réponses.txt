@@ -1,0 +1,89 @@
+Exercice1:
+    1) La fonction est_pair a un paramètre z qui n'est jamais utilisé
+        retirer le paramètre dans la fonction et lors de son appel 
+    2) La fonction ligne revoit 0 alors qu'elle est de type void
+        retirer la ligne return
+    3) à la ligne 38 vous déclarez une varaible que vous n'utilisez pas
+        retirer la déclaration de la variable
+    4) vous ne définissez pas le type de la fonction main
+        on définit le type de main à void
+    5) la fonction est_pair doit renvoyer un booléen mais ne renvoit rien
+        remplacer les printf par des return
+    6) à la ligne 61 vous faites un scanf sans passer l'addresse d'une varable en paramètre mais la variable elle même
+        ajouter une esperluette avant n
+    7) dans main, vous faites une assertion sur n alors que n n'a pas de valeur, l'assertion n'a aucun interêt 
+        retirer l'assertion
+    8) j doit varier de 1 à i-1 mais j n'est pas initialisé à 1
+        initialiser j à 1 dans la boucle
+
+
+
+Exercice2:
+    les valeurs de px et de py diffèrent de 4 ce qui semble logique car x est de type int et prend donc 4 octets de mémoire 
+
+Exercice3:
+    x vaut bien 6!
+
+Exercice4:
+    il y a une erreur de segmentation car on tente de lire la valeur à l'adresse p or p est NULL et l'adresse NULL n'exsiste pas donc le programme essaie de lire un valeur hors de la mémoire qui lui est allouée --> il échoue
+
+Exercice5:
+    question1: x est bien incrémentée!
+    
+Exercice7:
+    question1: le type des peut s'apparenter à celui d'un pointeur
+    
+Execice10:
+    question1:
+        a) les lettres de "a" à "z" correspondent aux entiers de 97 à 122
+        b) les chiffres de 1 à 9 correspondent aux entiers de 48 à 57 
+        c) le caratère \ correspond à l'entier 92
+        d) "\n" correspond à l'entier 10
+    
+    question2:
+        a) 0x20 correspond à l'espace
+        a) 0x28 correspond à la parenthèse '('
+        a) 0x29 correspond à la parenthèse ')'
+
+Exercice11:
+    Question1:
+        je peux écrire des chaines de caractères de plus de 10 lettres, ce qu'il se passe est que le programme écrit les caractères dans 
+        le buffer les une à la suite des autres mais ne fait pas attention à la mémoire alouée au buffer. 
+        Ainsi on peut modifier les cases mémoire après le buffer et par conséquent modifier des variable du programme
+        et injecter les valeurs que l'on shouhaite dans cetaines variables pour influer sur le résultat du programme
+
+
+    Question2:
+        je pense, en regardant les indices, que le programme va écrire SAULT\0!!R 
+        le programme n'écrit que SAULT car \0 marque le fin de la chaine de caractères
+
+
+    Question3:
+        le programme écrit :
+        BONJOUR
+        COUCOU BONJOUR
+
+        je pense qu'il fait cela car comme les deux chaînes de caractères sont stockées l'une à la suite de l'autre
+        et le programme ne sait que la chaîne finit car le dernier caractère est un espace le programme va écrite les caractères jusqu'à ce qu'il trouve un caractère NULL
+
+
+
+    
+
+
+
+
+ExerciceLibre:
+    J'ai recréé le jeu du Wordle ou du Motus en français. 
+    Mais comme je voulais un peu m'amuser, j'ai utilisé LE plus grand "attout" de la grammaire française: les accents.
+    Peut-être que j'ai fait une grave de sortir cette idée de mon chapeau, peut-être que jouer à ce jeu procure une douleur de crânienne aigue: à vous de voir!   
+    Vous pouvez donc être amenés à deviner le mot "dédît": Troisième personne du singulier de l'imparfait du subjonctif de dédire
+    Pour le côté technique, j'ai utilisé le dictionnaire de gutenberg qui contient 336530 mots de la langue française
+    puis je garde seulement les mots de 5 lettres.
+    J'ai fait tout cela sans la bibliothèque string.h que je n'avais pas encore vue le Weekend avant les vacances ce qui a là encore un peu corsé la chose :).
+    pour compiler: gcc listeDeMots.c wordleEnFranC.c -o wordleEnFranC
+
+    Au début ce qui prend le plus de temps pour le programme est de trouver les mots de 5 lettres parmi les autres (10 secondes environ) ensuite la partie commence.
+    pour exécuter: ./wordleEnFranC
+
+    

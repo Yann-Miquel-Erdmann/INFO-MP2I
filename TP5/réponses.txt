@@ -1,0 +1,8 @@
+Exercice1:
+    Question5:
+    si l'équipe dst et src pointent vers les mêmes structures etu_t, lors du free d'une des équipes les membres de l'équipe sont free aussi donc l'autre équipe pointe vers des etu_t vides 
+
+
+Exercice2:
+    Question1: on peut donner la valeur NULL
+    

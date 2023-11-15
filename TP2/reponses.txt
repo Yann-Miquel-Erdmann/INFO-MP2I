@@ -1,0 +1,62 @@
+Exercice1:
+    le programme écrit "non" systématiquement
+
+Exercice2:
+    question2:
+        x y x&&y
+        0 0 0
+        0 1 0
+        1 0 0
+        1 1 1
+
+        x y x||y
+        0 0 0
+        0 1 1
+        1 0 1
+        1 1 1
+
+
+Exercice8:
+    question3 On peut utiliser la dichotomie.
+
+
+Exercice11:
+    question2:
+        1) syracuse(9,6) = 34
+        2) syracuse(77,128) = 4
+        3) syracuse(1023,729) = 2
+        4) syracuse(1234567,52397) =2
+
+    question3:
+        temps_de_vol(1) = 0
+        temps_de_vol(26) = 10
+        temps_de_vol(27) = 111
+        temps_de_vol(28) = 18
+        temps_de_vol(77030) = 107
+        temps_de_vol(77031) = 350
+
+    question4:
+        plus_long_vol(10) = 9
+        plus_long_vol(100) = 97
+        plus_long_vol(1000) = 871
+        plus_long_vol(10000) = 6171
+        plus_long_vol(100000) = 77031
+        plus_long_vol(1000000) = 837799
+        plus_long_vol(10000000) = 8400511
+
+    question5:
+        15 secondes si on n'oublie pas long int, infinité sinon...
+        une manière d'optimiser est d'enregistrer dans une liste les temps_de_vol des N premiers nombres car on les calculera très probablement plusieurs fois
+        cela devient donc de la programmation dynamique
+
+    
+Exercice12:
+    Mon idée est de faire un programme qui fait rebondir une balle entre 4 murs.
+    L'illusion de mouvement est donnée en affichant plusieurs possitions de la balle à la suite dans le terminal.
+    Je décide donc de faire une boucle while infinie qui appelle une méthode d'affichage à intervalle régulier. 
+    Pour ce faire, je fais la différence entre l'heure à la fin de la boucle et celle au début puis j'attends si nécéssaire pour que le temps de chaque tour de boucle soit constant.     
+    C'est le programme bouncy_ball.c avec l'exécutable associé.
+
+    Lorsque j'ai fini de coder le programme et que j'ai vu le résultat, cela a fait resurgir en moi de vieux souvenirs...
+    Je me suis permis de les programmer eux aussi. 
+    Voyez donc bouncy_memory.c et son executable associé, peut-être goûterez vous aussi à cette Madeleine de Proust des années 2000...

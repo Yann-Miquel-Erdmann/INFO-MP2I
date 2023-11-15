@@ -1,0 +1,31 @@
+Exercice3:
+    5) je vois plusieurs éléments: . .. blabla.txt
+        je pense que le -a signifie all car on voit les dossiers . (actuel) et .. (précédent)
+
+Exercice9:
+    le résultat est bien celui prévu mais le prix a des 0 à la fin car il est flotant
+
+Exercice10:
+    6) le programme affiche 2.000000, je pense que c'est parceque le quotient de deux entiers est attendu comme entier puis converti en flotant
+
+Exercice11:
+    5) Le programme affiche les deux nombres de départ puis leur somme comme flotant.
+
+Exercice12:
+    3) le programme donne un résultat commplètement érroné, ici 4096 qui est une puissance de 2, peut-être la représentation en mémoire du caractère écrit.
+
+Exercice17:
+    1) une année contient aux alentours de 30_779_136 secondes
+        divisons 2_147_483_647 par 30_779_136, cela donne près de 69,8 années
+        1970 + 69 = 2039
+        time depassera la limite sur un int en fin d'année 2039
+
+    2) divisons 9_223_372_036_854_775_807 par 30_779_136, cela donne près de 299_663_123_645 années
+        time depassera la limite sur un long int en 299663125668
+        imaginez avec un unsigned long int ...
+
+
+Exercice18:
+    1) lorsque le programme est lancé a quelques secondes d'intervalle, les couples x et y semblent aléatoires
+    2) lorsque le programme est lancé plusieursfois dans la même seconde, les couples x et y sont les mêmes car ils ont la même seconde
+    3)
