@@ -1,0 +1,11 @@
+numberfile
+computerfile
+
+the coding train
+
+livre:
+cormen/ CLRS
+
+
+guillaume.rousseau@ac-toulouse.fr
+guillaume.rousseau@ens-lyon.fr
