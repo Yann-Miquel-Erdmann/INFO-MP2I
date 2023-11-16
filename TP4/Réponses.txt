@@ -1,8 +1,27 @@
 Exercice1:
     Question 1) 
-    0x34 correspond à '4' car 0x34 en hexa est égal à 52 qui est l'entier en base décimale correspondant qu caractère ascii '4'
-    0x30 correspond à '0' car 0x30 en hexa est égal à 48 qui est l'entier en base décimale correspondant qu caractère ascii '0'
-    0x0a correspond à '4' car 0x0a en hexa est égal à 10 qui est l'entier en base décimale correspondant qu caractère ascii '\0'
+     x34 correspond à '4' car  x34 en hexa est égal à 52 qui est l'entier en base décimale correspondant qu caractère ascii '4'
+     x3  correspond à ' ' car  x3  en hexa est égal à 48 qui est l'entier en base décimale correspondant qu caractère ascii ' '
+     x a correspond à '4' car  x a en hexa est égal à 1  qui est l'entier en base décimale correspondant qu caractère ascii '\ '
     
     Question2)
-        il y a 4 octets mais seul le premier n'est pas nul, il contient 0x28 ce qui correspond à 40 base décimale
+        il y a 4 octets mais seul le premier n'est pas nul, il contient  x28 ce qui correspond à 4  base décimale
+
+
+Exercice7:
+    Question 1) l'argument est de type char ** pour pouvoir mofier l'addresse du tableau lorsque l'on realloc
+    
+     
+Exercice8:
+    Question1: 
+        |        |
+        |        |
+        |  @   @ |
+        |   @  @ |
+        |    @@  |
+        |    @   |
+        |   @    |
+        | @@     |
+
+
+    
