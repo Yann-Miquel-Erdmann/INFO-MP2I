@@ -7,9 +7,8 @@
 // Je vais utiliser un tableau 2D de taille 8n/K x (8K +1) pour pouvoir afficher chaque ligne comme une string en mettant caractère nul à la fin de chaque ligne du tableau ce qui me permet de n'avoir qu'une boucle pour l'affichage
 
 // itère sur la chaine de caractères phrase et retire les caractères de la chaîne in qui ne possèdent pas de format image et que l'on ne pourra pas afficher correctement. la nouvelle chaîne remplace celle en entrée. Renvoie la longueur de la nouvelle phrase
-int check_phrase(char * phrase){
+int check_phrase(char * phrase,int  len, int K){
     assert(phrase != NULL);
-    int len = strlen(phrase);
     char * temp = malloc(65*sizeof(char));
     int indice = 0;
     for (int i = 0; i< len; i++){
@@ -19,8 +18,18 @@ int check_phrase(char * phrase){
             indice++;
         }
     }
+
+    if (indice%K != 0){  // rajoute des espaces pour avoir une dernière ligne complète
+        int ind = indice;
+        for (int i = 0; i<(K-ind%K); i++){
+            temp[indice] =  32;
+            indice++;
+        }
+    }
+
     temp[indice] = '\0';
     strcpy(phrase,temp);
+    free(temp);
     return indice;
 }
 
@@ -32,10 +41,10 @@ int check_phrase(char * phrase){
 // Stocke la nouvelle chaine à la place de l'ancienne (realloc si besoin)
 // Renvoie la longueur de la nouvelle phrase 
 int optimise_phrase(char ** phrase, int len, unsigned int K){
-    int * charToSpace = malloc(len* sizeof(int));
+    int * charToSpace = malloc(len * sizeof(int));
     int countToSpace = 1;
     
-    for (int i = len-1; i<= 0; i++){
+    for (int i = len-1; i >= 0; i--){  
         if((*phrase)[i] != 32){
             charToSpace[i] = countToSpace;
             countToSpace ++;
@@ -45,6 +54,7 @@ int optimise_phrase(char ** phrase, int len, unsigned int K){
         }
     }
 
+
     int * charCount = malloc(len * sizeof(int));
     int pos = 0;
     int i = 0;
@@ -53,26 +63,28 @@ int optimise_phrase(char ** phrase, int len, unsigned int K){
             for (int a = 0; a<charToSpace[i]; a++ ){
                 charCount[i+a] = 1;
             }
-            i+= charToSpace[i];
             pos+= charToSpace[i];
-            pos %= K;
+            i+= charToSpace[i];
+            pos = pos%K;
+            printf("%d\n", pos);
         }else{
             if (charToSpace[i] + pos > K){
                 charCount[i-1] += K-pos;
+                printf("pos %d\n",pos);
                 pos = 0;
             }else{
                 if (pos ==0 && (*phrase)[i] == 32){ // premier de la phrase est un espace
                     charCount[i] = 0;
                     i++;
-                }
-                
-                for (int a = 0; a<charToSpace[i]; a++ ){
-                    charCount[i+a] = 1;
-                }
+                }else{
+                    for (int a = 0; a<charToSpace[i]; a++ ){
+                        charCount[i+a] = 1;
+                    }
 
-                i+= charToSpace[i];
-                pos+= charToSpace[i];
-                pos %= K;
+                    pos+= charToSpace[i];
+                    i+= charToSpace[i];
+                    pos = pos% K;
+                }
 
             }
         }
@@ -83,6 +95,8 @@ int optimise_phrase(char ** phrase, int len, unsigned int K){
         sum += charCount[i];
     }
 
+    printf("sum %d\n", sum);
+
     char * temp = malloc((sum + (K-sum%K) +1)*sizeof(char));
     int indice = 0;
     for (int i = 0; i<len; i++){
@@ -91,16 +105,21 @@ int optimise_phrase(char ** phrase, int len, unsigned int K){
             indice++;
         }
     } 
-    for (int i = 0; i<(K-sum%K); i++){
-        temp[indice] =  32;
-        indice++;
-    }
-    temp[indice] = '\0';
-    free(*phrase);
 
+    if (sum%K != 0){ // rajoute des espaces pour avoir une dernière ligne complète
+        for (int i = 0; i<(K-sum%K); i++){
+            temp[indice] =  32;
+            indice++;
+        }
+    }
+
+    temp[indice] = '\0';
+    
+    
+    free(*phrase);
     *phrase = temp;
     
-  
+    free(charCount);
     free(charToSpace);
     return indice;
 }
@@ -130,15 +149,15 @@ char * img_filename(char c)  {
 
     if (65<=c && c<=90){ // lettre majuscule
         fileName[8] = c;
-        fileName[9] = '\0';
+        fileName[9] = c;
+        fileName[10] = '\0';
         strcat(fileName,ext);
         return fileName;
     }
 
     if (97<=c && c<=122){ // lettre minuscule
         fileName[8] = c;
-        fileName[9] = c;
-        fileName[10] = '\0';
+        fileName[9] = '\0';
         strcat(fileName,ext);
         return fileName;
 
@@ -150,16 +169,20 @@ void fill_matrix(char ** matrix, char * phrase,int len, int K, char pixel){
     char* fileName;
     for (int i = 0; i<len; i++){
         fileName = img_filename(phrase[i]);
+        printf("%s\n", fileName);
         FILE* f_in = fopen(fileName,"r");
-
+        assert(f_in != NULL);
+            
         for (int a = 0; a<8;a++){
             int val;
             fscanf(f_in,"%d\n",&val);
             for (int b = 0; b<8;b++){
-                if ((val>>8-b+1)%2 == 1){
-                    matrix[(i/K)*8+a][(i%K)+b] = pixel;
+                // printf("(%d %d _ %d) ",i%(K*8)+b, (i/K)*8+a, (val>>(8-b-1))%2);
+                fflush(stdout);
+                if ((val>>(8-b-1))%2 == 1){
+                    (matrix[(i/K)*8+a])[(i*8)%(K*8)+b] = pixel;
                 }else{
-                    matrix[(i/K)*8+a][(i%K)+b] = 32;
+                    (matrix[(i/K)*8+a])[(i%K)*8+b] = 32;
                 }
 
             }
@@ -170,7 +193,7 @@ void fill_matrix(char ** matrix, char * phrase,int len, int K, char pixel){
 
         if (i%K == K-1){
             for (int a = 0; a<8;a++){
-                matrix[(i/K)*8+a][(i%K)*8] = '\0';
+                matrix[(i/K)*8+a][(i%K)*8+8] = '\0';
             }
         }
     } 
@@ -178,9 +201,10 @@ void fill_matrix(char ** matrix, char * phrase,int len, int K, char pixel){
 // pour la matrice matrix de m linges, affiche chaque ligne comme une chaîne de caractères 
 void print_matrix(char ** matrix, int m){
     for (int i = 0; i< m; i++){
-        printf("%s\n", matrix[i]);
+    
+        printf("%s\n",matrix[i]);
         if (i%8 == 7){
-            printf("\n\n\n");
+            printf("\n");
         }
     }
 }
@@ -203,34 +227,55 @@ int main(int argc, char** argv){
     
     char optimize = 0;
     if (argc == 4){
+        
         char t[11] = "optimiser\0";
-        if (strcmp(t,argv[4]) == 0){
+        if (strcmp(t,argv[3]) == 0){
+            printf("Optimisation enclanchée!\n");
             optimize = 1;
         }
     }
 
 
     char* phrase = malloc(64*sizeof(char));
+    phrase[0] = '\0';
+    
     printf("Entrez la phrase à afficher en grand: ");
-    scanf("%s", phrase);
+    scanf("%[^\n]",phrase); // prend tout ce qui n'est pas un retour à la ligne.
+    
+    int len = 0;
+    len = strlen(phrase);
 
-    int len;
-    len = check_phrase(phrase);
-    printf("%d %s\n", len,phrase);
+    len = check_phrase(phrase,len, K);
+
 
     if (optimize){
         len = optimise_phrase(&phrase,len, K);
     }
 
 
-    char ** matrix = malloc((len-1/K + 1) *sizeof(char*));
-    for (int i = 0; i<(len-1/K + 1); i++ ){
-        matrix[i] = malloc((K*8+1)* sizeof(char));
+    if (len <= 0 ){   //  n'affiche rien si la phrase n'est pas valide (une phrase ne contenant que des espaces n'est pas valide)
+        fprintf(stderr,"Il faut donner une phrase à écrire!\n");
+        free(phrase);
+        exit(1);
+    }
+
+
+    int n = (K*8+1), m = ((len-1)/K + 1)*8;
+
+    char ** matrix = malloc(m*sizeof(char*));
+    for (int i = 0; i<((len-1)/K + 1)*8; i++ ){
+        matrix[i] = malloc(n* sizeof(char));
+        matrix[i][0] = '\0';
     }
 
     fill_matrix(matrix,phrase,len,K,pixel);
-    print_matrix(matrix, (len-1/K + 1));
+    print_matrix(matrix,m);
 
 
     free(phrase);
+
+    for (int i = 0; i<m; i++){
+        free(matrix[i]);
+    }
+    free(matrix);
 }
