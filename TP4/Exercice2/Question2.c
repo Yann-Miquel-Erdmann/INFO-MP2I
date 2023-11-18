@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <string.h>
 
-
+// renvoie le nombre d'occurences de motif dans le fichier filename
 int nb_occurences(char* filename, char* motif){
     FILE* f_in = fopen(filename, "r");	
 	assert(f_in != NULL);

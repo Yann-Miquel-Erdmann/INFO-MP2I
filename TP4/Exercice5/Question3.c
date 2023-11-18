@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 
+// renvoie un poineur vers un tableau contenant n zéros puis m uns
 int * zeros_uns(int n, int m){
     int * t = malloc((n+m)*sizeof(int));
     for (int i = 0; i<n; i++){

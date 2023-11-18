@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-
+// affiche chaque lignes avec son numéro du fichier donné en paramètres  
 int main(int argc, char** argv){
     assert(argc > 1);
 

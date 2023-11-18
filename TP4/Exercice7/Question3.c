@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-
+// lit une ligne du fichier f et la stocke dans buffer , un tableau de taille n et renvoie la longuer de la ligne
 int ma_getline(char **buffer, unsigned long int * n,FILE * f){
     if (*buffer == NULL){
         *n = 30;
@@ -27,7 +27,7 @@ int ma_getline(char **buffer, unsigned long int * n,FILE * f){
     return len;
 }
 
-
+// affiche chaque lignes avec son numéro du fichier donné en paramètres  
 int main(int argc, char** argv){
     assert(argc > 1);
 

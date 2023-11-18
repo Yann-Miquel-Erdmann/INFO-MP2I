@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
 
+
+// lit des entiers dans le fichier filename jusqu'a tomber sur un zéro, renvoie le nombre d'entiers lus
 int premier_zero(char* filename){
     FILE* f_in = fopen(filename, "r");	
 	assert(f_in != NULL);

@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
+// lit n flotants dans le fichier f et les stocke dans un tableau puis renvoie le tableau 
 float * lire_flottants(FILE *f,int*n){
     float * flottants = malloc(*n*sizeof(float));
 

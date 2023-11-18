@@ -7,7 +7,7 @@
 
 
 
-
+// copie le fichier in_fn dans out_fn
 void copy(char* in_fn, char* out_fn){
     FILE* f_in = fopen(in_fn, "r");	
 	assert(f_in != NULL);

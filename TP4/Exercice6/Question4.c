@@ -2,6 +2,8 @@
 #include <assert.h>
 #include <stdlib.h>
 
+
+// renvoie la moyenne des valeurs des voisins de l'élément à l'indice i,j dans la matrice m de taille n,m 
 float moy(int ** g, int n, int m, int i, int j){
     int sum = 0;
     int count = 0;
@@ -24,6 +26,8 @@ float moy(int ** g, int n, int m, int i, int j){
     return (float)sum/count;
 }
 
+
+// affiche les indices des éléments pour lesquels le résultat par la fonction moy est minimal
 void min_moy( int ** g, int n, int m){
     int count = 0; 
     int * x_index = malloc(n * m * sizeof(int));

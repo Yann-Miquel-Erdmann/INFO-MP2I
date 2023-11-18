@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 
-
+// vérifie si deux tableaux d'entiers de n éléments t1 et t2 sont égaux
 bool egaux(int * t1,int* t2, int n){
     for (int i = 0; i<n; i++){
         if (t1[i] != t2[i]){

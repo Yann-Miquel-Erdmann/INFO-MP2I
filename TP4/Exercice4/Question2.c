@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
+// lit une ligne du fichier f si elle fait moins de n_max caractères et la stocke dans résulat
 void lire_ligne(FILE* f,char* resultat, int n_max){
     ;
 };

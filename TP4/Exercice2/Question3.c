@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <string.h>
 
+// écrit la chaîne de caractères mot en partant de la fin dans mot
 void retourne_mot(char * mot){
     char temp[30];
     int i= 0; 
@@ -16,6 +17,7 @@ void retourne_mot(char * mot){
     strcpy(mot,temp);
 }
 
+// pour chaque mot du fichier in_fn, écrit le mot retourné avec la fonction retourne_mot dans le fichier out_fn
 void retourne_fichier(char* in_fn, char* out_fn){
     FILE* f_in = fopen(in_fn, "r");	
 	assert(f_in != NULL);
