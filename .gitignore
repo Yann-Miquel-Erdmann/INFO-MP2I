@@ -1,6 +1,8 @@
-*
-!*.*
-!*/
-
 *.zip
+*.pdf
+**/build/**
+**/.vscode/**
 
+**/__pycache__
+TP14/Exercice2/data/
+TP17/metro/

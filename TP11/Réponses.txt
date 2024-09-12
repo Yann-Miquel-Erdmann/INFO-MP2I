@@ -1,0 +1,25 @@
+# TP11 
+Yann Miquel--Erdmann
+
+## Exercice 1
+
+### Q9: 
+la liste [répéter; répéter; pair] n'est pas une liste valide en Ocaml. En effet tous les éléments doivent être du même type or répéter est de type string->string et pair est de type int->string. Ce n'est pas possible!!!
+
+
+
+## Exercice 3
+
+### Q3:
+J'ai écrit la fonction random_carte qui renvoie une carte aléatoire dans le jeu de 52 cartes.\
+Elle s'utilise comme ceci:
+ 
+```Ocaml
+random_carte ();;
+```
+
+### Q4:
+Les cartes sont rangées dans l'ordre dans lequel sont définis les constructeurs, c'est à dire Nombre < Valet< Dame< Roi< As. Si le constructeur est le même alors Ocaml compare les paramètres de ceux ci.
+
+
+
