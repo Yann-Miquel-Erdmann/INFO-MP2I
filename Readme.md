@@ -1,6 +1,6 @@
 ### Informatique MP2I ###
 Ici sont touts mes TPs et DMs d'informatique de MP2I. 
-Ce dépôt sera actualisé au fil de l'année.
+Ce dépôt ne sera plus actualisé.
 
 Ceci a pour vocation de permettre aux autre élèves de s'inspirer, de se débloquer et avoir accès à mes exercices résolus.
 
